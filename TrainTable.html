@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <title>Train Schedule Tracker</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+    <!-- Firebase Reference -->
+    
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+
+    <!-- Moment.js Reference -->
+    <!-- <script src="http://momentjs.com/downloads/moment.js"></script>   -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Train Schedule Tracker -->
+    <div class="container">
+
+      <!-- Jumbotron -->
+      <div class="jumbotron" style="background-color: black; color: white">
+        <h1 class="text-center">Train Schedule</h1>
+        <h3 class="text-center">Departures, Arrivals, and Trip Durations</h3>
+      </div>
+
+      <div class="row">
+
+        <div class="col-lg-12">
+
+        <!-- Current Trains-->
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>Current Trains</strong></h3>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover" id='train-table'>
+                <thead>
+                  <tr>
+                    <th id ="first">Train Name</th>
+                    <th id = "second">Train Destination</th>
+                    <th id = "third">First Train Time</th>
+                    <th id = "Fourth">Frequency</th>
+                    <th id = "fifth">Next Train Arrival</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Add Train  -->
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title"><strong>Add train</strong></h3>
+            </div>
+            <div class="panel-body">
+
+              <!-- Entry Form -->
+              <form>
+                <div class="form-group">
+                  <label for="train-name-input">Train Name</label>
+                  <input class="form-control" id="train-name-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="destination-input">Destination</label>
+                  <input class="form-control" id="destination-input" type="text">
+                </div>
+                <div class="form-group">
+                  <label for="start-date-input">First Train Time</label>
+                  <input class="form-control" id="start-date-input" type="text">
+                </div>
+                
+                <div class="form-group">
+                  <label for="start-date-input">Frequency</label>
+                  <input class="form-control" id="frequency-input" type="text">
+                </div>
+  
+
+                <div class="form-group">
+                  <label for="next-train-input">Next Train Arrival</label>
+                  <input class="form-control" id="next-train-arrival-input" type="text">
+                </div>
+                <button class="btn btn-primary" id="add-train-btn" type="submit">Submit</button>
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <!--<script src="timesheetLogic.js"></script> -->
+    <script src="TrainTable.js"></script>
+
+  </body>
+
+</html>
