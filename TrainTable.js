@@ -1,14 +1,20 @@
 
   // Initialize Firebase
+  
+
+
+
+  // Initialize Firebase
   var config = {
     apiKey: "AIzaSyD-URMCuZ5r3YsbDGyKgye_Wzz_hJ4SVSg",
     authDomain: "traintable-c8e48.firebaseapp.com",
     databaseURL: "https://traintable-c8e48.firebaseio.com",
     projectId: "traintable-c8e48",
-    storageBucket: "",
+    storageBucket: "traintable-c8e48.appspot.com",
     messagingSenderId: "668296204704"
   };
   firebase.initializeApp(config);
+
 
   var database = firebase.database();
 
@@ -24,7 +30,8 @@ $("#add-train-btn").on("click", function(event) {
   var trainStartDate = moment($("#start-date-input").val().trim(), "hh:mm");
   var trainFrequency = $("#frequency-input").val().trim();
 
-  var first time = 05:00;
+  var firstTime = "05:00";
+  var nextTrain = "10 minutes";
   var currentTime = moment();
   var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
   var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
@@ -36,10 +43,10 @@ $("#add-train-btn").on("click", function(event) {
   var newTrain = {
     name: trainName,
     destination: trainDestination,
-    startDate: trainStartDate,
+    startDate: trainStartDate.format(),
     frequency: trainFrequency,
   };
-
+console.log(newTrain);
   // Uploads train data to the database
   database.ref().push(newTrain);
 
@@ -75,15 +82,16 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   console.log(trainFrequency);
 
   // Prettify the train start
-  var trainStartPretty = moment.unix(trainStart).format("hh:mm");
+  var trainStartPretty = moment.unix(trainStartDate).format("hh:mm");
 
 
+ $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" +
+  trainStartDate + "</td><td>" + trainFrequency + "</td><td>" + nextTrain +"</td></tr>");
 
-
-  $("#first").append("trainName");
+  /*$("#first").append("trainName");
   $("#second").append("trainDestination");
   $("third").append("trainStartPretty");
   $("fourth").append("trainFrequency");
-  $("fifth").append("nextTrain");
+  $("fifth").append("nextTrain");*/
 });
 
